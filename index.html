@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App de Retos y Favoritos</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="icon.png">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header>
+      <h2>Retos Diarios</h2>
+      <input type="text" id="search" placeholder="Buscar reto...">
+      <select id="filter">
+        <option value="all">Todos</option>
+        <option value="mind">🧠 Mente</option>
+        <option value="body">💪 Cuerpo</option>
+        <option value="eco">🌍 Eco</option>
+      </select>
+    </header>
+
+    <!-- Pestañas con emojis -->
+    <section id="tabs">
+      <button class="tab active" data-tab="challenges">🏆 Retos</button>
+      <button class="tab" data-tab="favorites">⭐ Favoritos</button>
+      <button class="tab" data-tab="register">📝 Registro</button>
+      <button class="tab" data-tab="about">ℹ️ Acerca</button>
+    </section>
+
+    <!-- Contenido de las pestañas -->
+    <section id="content">
+      <div id="challenges" class="tab-content active"></div>
+      <div id="favorites" class="tab-content"></div>
+      <div id="register" class="tab-content">
+        <form id="registerForm">
+          <input type="text" placeholder="Nombre" required>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Contraseña" required>
+          <input type="date" placeholder="Fecha de Nacimiento" required>
+          <input type="text" placeholder="Ciudad" required>
+          <input type="text" placeholder="País" required>
+          <input type="tel" placeholder="Teléfono" required>
+          <button type="submit">Registrar</button>
+        </form>
+      </div>
+      <div id="about" class="tab-content">
+        <h3>🃏 Acerca de esta App</h3>
+  <p>
+    ¿Y si una simple carta pudiera cambiar tu día?
+  </p>
+  <p>
+    Esta app fue creada con una idea sencilla pero poderosa: inspirarte a través de pequeños retos diarios, ayudándote a vivir con más intención, curiosidad y alegría.
+  </p>
+  <p>
+    Cada reto se elige de manera aleatoria con una baraja de cartas, combinando el factor sorpresa con el impulso de hacer algo distinto y positivo.
+  </p>
+  <p><strong>¿Qué encontrarás aquí?</strong></p>
+  <ul>
+    <li>Retos breves y accesibles que puedes hacer en cualquier momento del día.</li>
+    <li>Desafíos para el cuerpo, la mente y el alma: desde moverte más, hasta reflexionar, conectar o crear.</li>
+    <li>Un sistema de cartas que convierte cada reto en un juego. ¡Nunca sabrás qué te tocará… y eso lo hace más divertido!</li>
+    <li>Una sección de favoritos para guardar esos retos que más te inspiran.</li>
+    <li>Una interfaz simple, limpia y pensada para que te enfoques en lo importante: tomar acción.</li>
+  </ul>
+  <p><strong>¿Por qué usarla?</strong></p>
+  <p>
+    Porque a veces solo necesitamos un pequeño empujón para salir de la rutina, descubrir algo nuevo de nosotros mismos o simplemente pasar un buen rato.
+  </p>
+  <p>
+    Esta app no pretende cambiar tu vida de un día para otro, pero sí ayudarte a sumar pequeños momentos que, con el tiempo, pueden marcar la diferencia.
+  </p>
+      </div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
