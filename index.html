@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reto Diario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+    <div id="app">
+        <header>
+        <h2>Reto Diario</h2>
+        <input type="text" id="search" placeholder="Buscar..." />
+        <select id="filter">
+            <option value="">Categoría</option>
+            <option value="mentales">Mentales</option>
+            <option value="fisicos">Físicos</option>
+        </select>
+        </header>
+
+        <div id="tabs">
+        <div class="tab active" data-tab="retos">Retos</div>
+        <div class="tab" data-tab="favoritos">Favoritos</div>
+        <div class="tab" data-tab="acerca">Acerca</div>
+        <div class="tab" data-tab="contactos">Contactos</div>
+        </div>
+
+        <div id="content">
+        <!-- Sección de Retos -->
+        <div id="retos" class="tab-content active">
+            <div id="challenges"></div>
+        </div>
+
+        <!-- Sección de Favoritos -->
+        <div id="favoritos" class="tab-content">
+            <div id="favorites"></div>
+        </div>
+
+        <!-- Sección Acerca de -->
+        <div id="acerca" class="tab-content"></div>
+
+        <!-- Sección de Contactos -->
+        <div id="contactos" class="tab-content">
+            <div id="contact-info">
+            <h1>Carta API</h1>
+            <p>Johan Torres</p>
+            <img src="img/logo.jpg" alt="Logo Personalizado" id="logo-contacto">
+            <div class="info-box">
+                <p>Api con información de 52 cartas</p>
+            </div>
+            <p><a href="https://github.com/JohanTorres17">github.com/JohanTorres17</a></p>
+            <p>v 1.0.1</p>
+            </div>
+        </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/challenges.js"></script>
+    <script type="module" src="js/favoritos.js"></script>
+    <script type="module" src="js/search.js"></script>
+    <script type="module" src="js/about.js"></script>
+    <script type="module" src="js/tabs.js"></script>
+    <script type="module" src="js/contacts.js"></script>
+
+    <script type="module">
+        // Inicialización de la aplicación
+        import { fetchDeck } from './js/api.js';
+        import { renderChallenges } from './js/challenges.js';
+        import { loadFavorites } from './js/favoritos.js';
+        import { bindSearchFilter } from './js/search.js';
+        import { renderAbout } from './js/about.js';
+        import { bindTabs } from './js/tabs.js';
+        import { renderContactInfo } from './js/contacts.js'; // Importar renderContactInfo
+
+        async function init() {
+        const deckId = await fetchDeck();
+        if (deckId) {
+            renderChallenges(deckId);
+        }
+        loadFavorites(); // Cargar favoritos
+        bindSearchFilter(); // Habilitar búsqueda y filtro
+        renderAbout(); // Mostrar la sección "Acerca de"
+        bindTabs(); // Habilitar navegación entre pestañas
+        renderContactInfo(); // Renderizar la sección de contactos
+        }
+
+        init();
+    </script>
+    </body>
+    </html>
