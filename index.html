@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reto Diario</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
     <div id="app">
@@ -55,36 +55,31 @@
         </div>
 
     <!-- Scripts -->
-    <script type="module" src="js/api.js"></script>
-    <script type="module" src="js/challenges.js"></script>
-    <script type="module" src="js/favoritos.js"></script>
-    <script type="module" src="js/search.js"></script>
-    <script type="module" src="js/about.js"></script>
-    <script type="module" src="js/tabs.js"></script>
-    <script type="module" src="js/contacts.js"></script>
-
-    <script type="module">
+    <script src="js/api.js"></script>
+    <script src="js/challenges.js"></script>
+    <script src="js/favoritos.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/about.js"></script>
+    <script src="js/contacts.js"></script>
+    <script>
         // Inicialización de la aplicación
-        import { fetchDeck } from './js/api.js';
-        import { renderChallenges } from './js/challenges.js';
-        import { loadFavorites } from './js/favoritos.js';
-        import { bindSearchFilter } from './js/search.js';
-        import { renderAbout } from './js/about.js';
-        import { bindTabs } from './js/tabs.js';
-        import { renderContactInfo } from './js/contacts.js'; // Importar renderContactInfo
-
         async function init() {
-        const deckId = await fetchDeck();
-        if (deckId) {
-            renderChallenges(deckId);
+            console.log("Iniciando la aplicación...");
+            const deckId = await fetchDeck();
+            if (deckId) {
+                console.log("Deck cargado. Renderizando retos...");
+                renderChallenges(deckId);
+            } else {
+                console.error("No se pudo cargar el deck.");
+            }
+            loadFavorites(); // Cargar favoritos
+            bindSearchFilter(); // Habilitar búsqueda y filtro
+            bindTabs(); // Habilitar navegación entre pestañas
+            renderAbout(); // Mostrar la sección "Acerca de"
+            renderContactInfo(); // Renderizar la sección de contactos
         }
-        loadFavorites(); // Cargar favoritos
-        bindSearchFilter(); // Habilitar búsqueda y filtro
-        renderAbout(); // Mostrar la sección "Acerca de"
-        bindTabs(); // Habilitar navegación entre pestañas
-        renderContactInfo(); // Renderizar la sección de contactos
-        }
-
+    
         init();
     </script>
     </body>

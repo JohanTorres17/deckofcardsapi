@@ -1,6 +1,6 @@
-import { drawCard } from './api.js';
+// challenges.js
 
-export let challengesData = []; // Exporta challengesData para ser usada en otros módulos
+let challengesData = []; // Variable global para almacenar los datos de los retos
 
 const challengesMap = {
     'AS': { text: 'Haz algo amable por un extraño hoy.', category: 'mentales' },
@@ -55,57 +55,53 @@ const challengesMap = {
     'JC': { text: 'Haz compost o revisa tu compost.', category: 'fisicos' },
     'QC': { text: 'Investiga alternativas sostenibles.', category: 'mentales' },
     'KC': { text: 'Planifica una compra ecológica.', category: 'fisicos' }
-  };
+};
 
-export async function renderChallenges(deckId) {
+async function renderChallenges(deckId) {
+  console.log(`Renderizando retos para el deck ID: ${deckId}`);
   const container = document.getElementById('challenges');
   container.innerHTML = '';
 
   for (let i = 0; i < 6; i++) {
-    const card = await drawCard(deckId);
-    if (!card) {
-      const errorItem = document.createElement('div');
-      errorItem.className = 'challenge-item';
-      errorItem.innerHTML = `<span>No se pudo cargar el reto.</span>`;
-      container.appendChild(errorItem);
-      continue;
-    }
+      const card = await drawCard(deckId);
+      if (!card) {
+          console.error("No se pudo cargar una carta.");
+          continue;
+      }
 
-    const code = (card.value === '10' ? '0' : card.value.charAt(0)) + card.suit.charAt(0);
-    const challenge = challengesMap[code] || { text: '¡Intenta algo nuevo hoy!', category: 'otros' };
-    challengesData.push({ code, card, text: challenge.text, category: challenge.category });
+      const code = (card.value === '10' ? '0' : card.value.charAt(0)) + card.suit.charAt(0);
+      const challenge = challengesMap[code] || { text: '¡Intenta algo nuevo hoy!', category: 'otros' };
+      challengesData.push({ code, card, text: challenge.text, category: challenge.category });
 
-    const item = document.createElement('div');
-    item.className = 'challenge-item';
-    item.setAttribute('data-category', challenge.category); // Asignar la categoría
-    item.innerHTML = `
-      <img src="${card.image}" width="50">
-      <span>${challenge.text}</span>
-      <button data-code="${code}">+</button>
-    `;
-    container.appendChild(item);
+      const item = document.createElement('div');
+      item.className = 'challenge-item';
+      item.setAttribute('data-category', challenge.category);
+      item.innerHTML = `
+          <img src="${card.image}" width="50">
+          <span>${challenge.text}</span>
+          <button data-code="${code}">+</button>
+      `;
+      container.appendChild(item);
   }
 
   container.querySelectorAll('button').forEach(btn => btn.onclick = toggleFavorite);
 }
 
 function toggleFavorite(e) {
-  const code = e.target.dataset.code;
-  let favs = JSON.parse(localStorage.getItem('favs') || '[]');
+    const code = e.target.dataset.code;
+    let favs = JSON.parse(localStorage.getItem('favs') || '[]');
 
-  if (favs.includes(code)) {
-    favs = favs.filter(fav => fav !== code);
-  } else {
-    favs.push(code);
-  }
+    if (favs.includes(code)) {
+        favs = favs.filter(fav => fav !== code);
+    } else {
+        favs.push(code);
+    }
 
-  localStorage.setItem('favs', JSON.stringify(favs));
-  renderFavorites(); // Actualiza los favoritos después de cambiarlos
+    localStorage.setItem('favs', JSON.stringify(favs));
+    renderFavorites(); // Llama a la función global definida en favoritos.js
 }
 
-// Importa renderFavorites desde favoritos.js
-import { renderFavorites } from './favoritos.js';
-
+// Función para renderizar los favoritos
 function renderFavoritesWrapper() {
-  renderFavorites();
+    renderFavorites();
 }
