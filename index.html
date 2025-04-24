@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reto Diario</title>
+    <meta charset="UTF-8" /> <!-- Define la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Asegura diseño responsivo -->
+    <title>Reto Diario</title> <!-- Título de la página -->
+
     <style>
-      /* Reset básico */
+        /* Reset básico para eliminar márgenes y paddings predeterminados */
         * {
             margin: 0;
             padding: 0;
@@ -14,114 +15,114 @@
 
         /* Estilos generales del body */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Arial', sans-serif; /* Fuente principal */
             background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Fondo degradado */
-            color: #333;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+            color: #333; /* Color de texto general */
+            height: 100vh; /* Altura completa de la ventana */
+            display: flex; /* Layout flexible */
+            flex-direction: column; /* Organiza elementos en columna */
         }
 
         /* Header principal */
         header {
-            background: #fff;
-            padding: 16px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            background: #fff; /* Fondo blanco */
+            padding: 16px; /* Espaciado interno */
+            text-align: center; /* Alineación centrada */
+            border-bottom: 1px solid #ddd; /* Borde inferior sutil */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
         }
         header h2 {
-            font-size: 22px;
-            color: #333;
-            font-weight: 700; /* Más peso visual */
+            font-size: 22px; /* Tamaño de fuente */
+            color: #333; /* Color del título */
+            font-weight: 700; /* Negrita */
             letter-spacing: 1px; /* Espaciado entre letras */
         }
 
         /* Pestañas (Tabs) */
         #tabs {
-            display: flex;
-            background: #f9f9f9;
-            margin-top: 12px;
+            display: flex; /* Layout flexible horizontal */
+            background: #f9f9f9; /* Fondo claro */
+            margin-top: 12px; /* Margen superior */
             border-radius: 8px; /* Bordes redondeados */
             overflow: hidden; /* Evita bordes irregulares */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera */
         }
         .tab {
-            flex: 1;
-            text-align: center;
-            padding: 12px;
-            font-size: 14px;
-            cursor: pointer;
+            flex: 1; /* Distribuye espacio equitativamente */
+            text-align: center; /* Alineación centrada */
+            padding: 12px; /* Espaciado interno */
+            font-size: 14px; /* Tamaño de fuente */
+            cursor: pointer; /* Cursor de puntero */
             transition: all 0.3s ease; /* Transición suave */
-            color: #555;
-            background: #f9f9f9;
+            color: #555; /* Color de texto */
+            background: #f9f9f9; /* Fondo claro */
         }
         .tab:hover {
-            background: #eaeaea; /* Cambio de color al pasar el mouse */
-            color: #333;
+            background: #eaeaea; /* Cambio de fondo al pasar el mouse */
+            color: #333; /* Cambio de color de texto */
         }
         .tab.active {
-            background: #6a9eff; /* Azul vibrante para el estado activo */
-            color: #fff;
-            font-weight: bold;
+            background: #6a9eff; /* Azul vibrante para estado activo */
+            color: #fff; /* Texto blanco */
+            font-weight: bold; /* Negrita */
         }
 
         /* Contenido principal */
         #content {
-            flex: 1;
-            margin-top: 12px;
-            padding: 16px;
-            background: #fff;
-            overflow-y: auto;
-            border-radius: 12px; /* Bordes más redondeados */
+            flex: 1; /* Ocupa el espacio restante */
+            margin-top: 12px; /* Margen superior */
+            padding: 16px; /* Espaciado interno */
+            background: #fff; /* Fondo blanco */
+            overflow-y: auto; /* Barra de desplazamiento vertical */
+            border-radius: 12px; /* Bordes redondeados */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
         }
         .tab-content {
-            display: none;
+            display: none; /* Oculta contenido por defecto */
         }
         .tab-content.active {
-            display: block;
+            display: block; /* Muestra contenido activo */
         }
 
         /* Elementos de desafío (Challenge Items) */
         .challenge-item {
-            display: flex;
-            align-items: center;
-            padding: 16px;
-            border: 1px solid #ddd;
-            margin-bottom: 12px;
-            background: #fff;
-            border-radius: 12px; /* Bordes más redondeados */
+            display: flex; /* Layout flexible */
+            align-items: center; /* Alinea elementos verticalmente */
+            padding: 16px; /* Espaciado interno */
+            border: 1px solid #ddd; /* Borde sutil */
+            margin-bottom: 12px; /* Margen inferior */
+            background: #fff; /* Fondo blanco */
+            border-radius: 12px; /* Bordes redondeados */
             transition: transform 0.2s ease, box-shadow 0.2s ease; /* Efecto de elevación */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera */
         }
         .challenge-item:hover {
-            transform: translateY(-4px); /* Elevación más pronunciada al pasar el mouse */
+            transform: translateY(-4px); /* Elevación al pasar el mouse */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
         }
         .challenge-item img {
-            width: 60px;
-            height: 80px;
-            margin-right: 16px;
-            object-fit: cover;
+            width: 60px; /* Ancho de la imagen */
+            height: 80px; /* Altura de la imagen */
+            margin-right: 16px; /* Margen derecho */
+            object-fit: cover; /* Ajusta la imagen */
             border-radius: 8px; /* Bordes redondeados */
             border: 2px solid #ddd; /* Borde sutil */
         }
         .challenge-item span {
-            flex: 1;
-            font-size: 14px;
-            line-height: 1.5;
-            color: #444; /* Color más suave */
+            flex: 1; /* Ocupa el espacio restante */
+            font-size: 14px; /* Tamaño de fuente */
+            line-height: 1.5; /* Espaciado entre líneas */
+            color: #444; /* Color de texto */
         }
         .challenge-item button {
-            padding: 10px 16px;
+            padding: 10px 16px; /* Espaciado interno */
             background: #6a9eff; /* Azul vibrante */
-            color: #fff;
-            border: none;
+            color: #fff; /* Texto blanco */
+            border: none; /* Sin borde */
             border-radius: 8px; /* Bordes redondeados */
-            cursor: pointer;
+            cursor: pointer; /* Cursor de puntero */
             transition: background 0.3s ease, transform 0.2s ease; /* Transición suave */
-            font-weight: 600;
+            font-weight: 600; /* Negrita */
         }
         .challenge-item button:hover {
             background: #4d8cff; /* Azul más oscuro al pasar el mouse */
@@ -130,144 +131,147 @@
 
         /* Sección de Contactos */
         #contactos {
-            background: #fff;
-            padding: 24px;
-            margin: 24px;
+            background: #fff; /* Fondo blanco */
+            padding: 24px; /* Espaciado interno */
+            margin: 24px; /* Margen externo */
             border-radius: 16px; /* Bordes redondeados */
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra pronunciada */
-            text-align: center;
+            text-align: center; /* Alineación centrada */
         }
         #contactos h1 {
-            font-size: 24px;
-            margin-bottom: 16px;
-            color: #333;
-            letter-spacing: 1px;
+            font-size: 24px; /* Tamaño de fuente */
+            margin-bottom: 16px; /* Margen inferior */
+            color: #333; /* Color de texto */
+            letter-spacing: 1px; /* Espaciado entre letras */
         }
         #contactos p {
-            font-size: 14px;
-            margin-bottom: 16px;
-            color: #555;
-            line-height: 1.6;
+            font-size: 14px; /* Tamaño de fuente */
+            margin-bottom: 16px; /* Margen inferior */
+            color: #555; /* Color de texto */
+            line-height: 1.6; /* Espaciado entre líneas */
         }
         #logo-contacto {
-            width: 160px;
-            height: 160px;
-            margin: 20px auto;
-            display: block;
+            width: 160px; /* Ancho de la imagen */
+            height: 160px; /* Altura de la imagen */
+            margin: 20px auto; /* Margen automático */
+            display: block; /* Bloque independiente */
             border-radius: 50%; /* Forma circular */
-            object-fit: cover;
+            object-fit: cover; /* Ajusta la imagen */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
-            border: 4px solid #fff; /* Borde blanco para resaltar */
+            border: 4px solid #fff; /* Borde blanco */
         }
 
         /* Sección de Información de API */
         #api-info {
             background: #6a9eff; /* Fondo azul vibrante */
-            color: #fff;
-            padding: 24px;
-            margin: 24px;
+            color: #fff; /* Texto blanco */
+            padding: 24px; /* Espaciado interno */
+            margin: 24px; /* Margen externo */
             border-radius: 16px; /* Bordes redondeados */
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra pronunciada */
-            text-align: center;
+            text-align: center; /* Alineación centrada */
         }
         #api-info h2 {
-            font-size: 20px;
-            margin-bottom: 12px;
-            color: #fff;
-            letter-spacing: 1px;
+            font-size: 20px; /* Tamaño de fuente */
+            margin-bottom: 12px; /* Margen inferior */
+            color: #fff; /* Texto blanco */
+            letter-spacing: 1px; /* Espaciado entre letras */
         }
         #api-info p {
-            font-size: 14px;
-            margin-bottom: 16px;
+            font-size: 14px; /* Tamaño de fuente */
+            margin-bottom: 16px; /* Margen inferior */
             color: rgba(255, 255, 255, 0.8); /* Texto semi-transparente */
-            line-height: 1.6;
+            line-height: 1.6; /* Espaciado entre líneas */
         }
         #api-info a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
+            color: #fff; /* Texto blanco */
+            text-decoration: none; /* Sin subrayado */
+            font-weight: bold; /* Negrita */
             border-bottom: 2px solid rgba(255, 255, 255, 0.5); /* Subrayado sutil */
-            transition: color 0.3s ease, border-color 0.3s ease;
+            transition: color 0.3s ease, border-color 0.3s ease; /* Transición suave */
         }
         #api-info a:hover {
             color: #ffeb3b; /* Amarillo brillante al pasar el mouse */
-            border-color: #ffeb3b;
+            border-color: #ffeb3b; /* Cambio de color del subrayado */
         }
     </style>
-    </head>
-    <body>
+</head>
+<body>
     <div id="app">
         <header>
-        <h2>Reto Diario</h2>
-        <input type="text" id="search" placeholder="Buscar..." />
-        <select id="filter">
-            <option value="">Categoría</option>
-            <option value="mentales">Mentales</option>
-            <option value="fisicos">Físicos</option>
-        </select>
+            <h2>Reto Diario</h2> <!-- Título principal -->
+            <input type="text" id="search" placeholder="Buscar..." /> <!-- Campo de búsqueda -->
+            <select id="filter"> <!-- Menú desplegable -->
+                <option value="">Categoría</option>
+                <option value="mentales">Mentales</option>
+                <option value="fisicos">Físicos</option>
+            </select>
         </header>
 
         <div id="tabs">
-        <div class="tab active" data-tab="retos">Retos</div>
-        <div class="tab" data-tab="favoritos">Favoritos</div>
-        <div class="tab" data-tab="acerca">Acerca</div>
-        <div class="tab" data-tab="contactos">Contactos</div>
+            <div class="tab active" data-tab="retos">Retos</div> <!-- Pestaña Retos -->
+            <div class="tab" data-tab="favoritos">Favoritos</div> <!-- Pestaña Favoritos -->
+            <div class="tab" data-tab="acerca">Acerca</div> <!-- Pestaña Acerca -->
+            <div class="tab" data-tab="contactos">Contactos</div> <!-- Pestaña Contactos -->
         </div>
 
         <div id="content">
-        <!-- Sección de Retos -->
-        <div id="retos" class="tab-content active">
-            <div id="challenges"></div>
-        </div>
-
-        <!-- Sección de Favoritos -->
-        <div id="favoritos" class="tab-content">
-            <div id="favorites"></div>
-        </div>
-
-        <!-- Sección Acerca de -->
-        <div id="acerca" class="tab-content"></div>
-
-        <!-- Sección de Contactos -->
-        <div id="contactos" class="tab-content">
-            <div id="contact-info">
-            <h1>Carta API</h1>
-            <p>Johan Torres</p>
-            <img src="img/logo.jpg" alt="Logo Personalizado" id="logo-contacto">
-            <div class="info-box">
-                <p>Api con información de 52 cartas</p>
+            <!-- Sección de Retos -->
+            <div id="retos" class="tab-content active">
+                <div id="challenges"></div> <!-- Contenedor de retos -->
             </div>
-            <p><a href="https://github.com/JohanTorres17">github.com/JohanTorres17</a></p>
-            <p>v 1.0.1</p>
+
+            <!-- Sección de Favoritos -->
+            <div id="favoritos" class="tab-content">
+                <div id="favorites"></div> <!-- Contenedor de favoritos -->
+            </div>
+
+            <!-- Sección Acerca de -->
+            <div id="acerca" class="tab-content"></div> <!-- Contenedor Acerca de -->
+
+            <!-- Sección de Contactos -->
+            <div id="contactos" class="tab-content">
+                <div id="contact-info">
+                    <h1>Carta API</h1> <!-- Título de la sección -->
+                    <p>Johan Torres</p> <!-- Nombre del creador -->
+                    <img src="img/logo.jpg" alt="Logo Personalizado" id="logo-contacto"> <!-- Logo -->
+                    <div class="info-box">
+                        <p>Api con información de 52 cartas</p> <!-- Descripción -->
+                    </div>
+                    <p><a href="https://github.com/JohanTorres17">github.com/JohanTorres17</a></p> <!-- Enlace GitHub -->
+                    <p>v 1.0.1</p> <!-- Versión -->
+                </div>
             </div>
         </div>
-    <!-- Scripts -->
-    <script src="js/api.js"></script>
-    <script src="js/tabs.js"></script>
-    <script src="js/challenges.js"></script>
-    <script src="js/favoritos.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/about.js"></script>
-    <script src="js/contacts.js"></script>
-    <script>
-        // Inicialización de la aplicación
-        async function init() {
-            console.log("Iniciando la aplicación...");
-            const deckId = await fetchDeck();
-            if (deckId) {
-                console.log("Deck cargado. Renderizando retos...");
-                renderChallenges(deckId);
-            } else {
-                console.error("No se pudo cargar el deck.");
+
+        <!-- Scripts -->
+        <script src="js/api.js"></script> <!-- Script para manejar la API -->
+        <script src="js/tabs.js"></script> <!-- Script para las pestañas -->
+        <script src="js/challenges.js"></script> <!-- Script para los retos -->
+        <script src="js/favoritos.js"></script> <!-- Script para los favoritos -->
+        <script src="js/search.js"></script> <!-- Script para la búsqueda -->
+        <script src="js/about.js"></script> <!-- Script para la sección Acerca de -->
+        <script src="js/contacts.js"></script> <!-- Script para los contactos -->
+        <script>
+            // Inicialización de la aplicación
+            async function init() {
+                console.log("Iniciando la aplicación..."); // Mensaje de inicio
+                const deckId = await fetchDeck(); // Carga el deck
+                if (deckId) {
+                    console.log("Deck cargado. Renderizando retos..."); // Mensaje de éxito
+                    renderChallenges(deckId); // Renderiza los retos
+                } else {
+                    console.error("No se pudo cargar el deck."); // Mensaje de error
+                }
+                loadFavorites(); // Carga los favoritos
+                bindSearchFilter(); // Habilita búsqueda y filtro
+                bindTabs(); // Habilita navegación entre pestañas
+                renderAbout(); // Muestra la sección "Acerca de"
+                renderContactInfo(); // Renderiza la sección de contactos
             }
-            loadFavorites(); // Cargar favoritos
-            bindSearchFilter(); // Habilitar búsqueda y filtro
-            bindTabs(); // Habilitar navegación entre pestañas
-            renderAbout(); // Mostrar la sección "Acerca de"
-            renderContactInfo(); // Renderizar la sección de contactos
-        }
-    
-        init();
-    </script>
-    </body>
-    </html>
+
+            init(); // Llama a la función de inicialización
+        </script>
+    </div>
+</body>
+</html>

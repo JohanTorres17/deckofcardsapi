@@ -57,51 +57,60 @@ const challengesMap = {
     'KC': { text: 'Planifica una compra ecológica.', category: 'fisicos' }
 };
 
+// Función asíncrona para renderizar los retos utilizando las cartas del deck proporcionado
 async function renderChallenges(deckId) {
-  console.log(`Renderizando retos para el deck ID: ${deckId}`);
-  const container = document.getElementById('challenges');
-  container.innerHTML = '';
-
-  for (let i = 0; i < 6; i++) {
-      const card = await drawCard(deckId);
-      if (!card) {
-          console.error("No se pudo cargar una carta.");
-          continue;
-      }
-
-      const code = (card.value === '10' ? '0' : card.value.charAt(0)) + card.suit.charAt(0);
-      const challenge = challengesMap[code] || { text: '¡Intenta algo nuevo hoy!', category: 'otros' };
-      challengesData.push({ code, card, text: challenge.text, category: challenge.category });
-
-      const item = document.createElement('div');
-      item.className = 'challenge-item';
-      item.setAttribute('data-category', challenge.category);
-      item.innerHTML = `
-          <img src="${card.image}" width="50">
-          <span>${challenge.text}</span>
-          <button data-code="${code}">+</button>
-      `;
-      container.appendChild(item);
-  }
-
-  container.querySelectorAll('button').forEach(btn => btn.onclick = toggleFavorite);
-}
-
-function toggleFavorite(e) {
-    const code = e.target.dataset.code;
-    let favs = JSON.parse(localStorage.getItem('favs') || '[]');
-
-    if (favs.includes(code)) {
-        favs = favs.filter(fav => fav !== code);
-    } else {
-        favs.push(code);
+    console.log(`Renderizando retos para el deck ID: ${deckId}`); // Mensaje de depuración
+    const container = document.getElementById('challenges'); // Contenedor donde se mostrarán los retos
+    container.innerHTML = ''; // Limpia el contenedor antes de renderizar nuevos retos
+  
+    // Bucle para generar 6 retos (o cartas)
+    for (let i = 0; i < 6; i++) {
+        const card = await drawCard(deckId); // Obtiene una carta del deck mediante una función asíncrona
+        if (!card) {
+            console.error("No se pudo cargar una carta."); // Mensaje de error si no se puede cargar la carta
+            continue; // Salta al siguiente ciclo si no hay carta
+        }
+  
+        // Genera un código único basado en el valor y el palo de la carta
+        const code = (card.value === '10' ? '0' : card.value.charAt(0)) + card.suit.charAt(0);
+        // Busca el reto correspondiente en el mapa de desafíos, o usa un valor predeterminado
+        const challenge = challengesMap[code] || { text: '¡Intenta algo nuevo hoy!', category: 'otros' };
+        // Almacena los datos del reto en un array global para su uso posterior
+        challengesData.push({ code, card, text: challenge.text, category: challenge.category });
+  
+        // Crea un elemento div para representar el reto
+        const item = document.createElement('div');
+        item.className = 'challenge-item'; // Clase CSS para estilizar el reto
+        item.setAttribute('data-category', challenge.category); // Atributo personalizado para filtrar por categoría
+        item.innerHTML = `
+            <img src="${card.image}" width="50"> <!-- Imagen de la carta -->
+            <span>${challenge.text}</span> <!-- Texto del reto -->
+            <button data-code="${code}">+</button> <!-- Botón para agregar a favoritos -->
+        `;
+        container.appendChild(item); // Añade el reto al contenedor
     }
-
-    localStorage.setItem('favs', JSON.stringify(favs));
-    renderFavorites(); // Llama a la función global definida en favoritos.js
-}
-
-// Función para renderizar los favoritos
-function renderFavoritesWrapper() {
-    renderFavorites();
-}
+  
+    // Asigna eventos click a todos los botones de los retos para manejar favoritos
+    container.querySelectorAll('button').forEach(btn => btn.onclick = toggleFavorite);
+  }
+  
+  // Función para alternar un reto entre favoritos y no favoritos
+  function toggleFavorite(e) {
+      const code = e.target.dataset.code; // Obtiene el código único del reto desde el botón clicado
+      let favs = JSON.parse(localStorage.getItem('favs') || '[]'); // Obtiene la lista de favoritos del localStorage
+  
+      // Si el código ya está en favoritos, lo elimina; de lo contrario, lo agrega
+      if (favs.includes(code)) {
+          favs = favs.filter(fav => fav !== code); // Filtra para eliminar el código
+      } else {
+          favs.push(code); // Agrega el código a la lista de favoritos
+      }
+  
+      localStorage.setItem('favs', JSON.stringify(favs)); // Guarda la lista actualizada en localStorage
+      renderFavorites(); // Vuelve a renderizar los favoritos para reflejar los cambios
+  }
+  
+  // Función envoltorio para renderizar los favoritos
+  function renderFavoritesWrapper() {
+      renderFavorites(); // Llama a la función renderFavorites definida en favoritos.js
+  }
