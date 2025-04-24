@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reto Diario</title>
     <style>
-        /* Reset básico */
+      /* Reset básico */
         * {
             margin: 0;
             padding: 0;
@@ -130,12 +130,16 @@
 
         /* Sección de Contactos */
         #contactos {
-            text-align: center;
+            background: #fff;
             padding: 24px;
+            margin: 24px;
+            border-radius: 16px; /* Bordes redondeados */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra pronunciada */
+            text-align: center;
         }
         #contactos h1 {
             font-size: 24px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             color: #333;
             letter-spacing: 1px;
         }
@@ -154,6 +158,40 @@
             object-fit: cover;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
             border: 4px solid #fff; /* Borde blanco para resaltar */
+        }
+
+        /* Sección de Información de API */
+        #api-info {
+            background: #6a9eff; /* Fondo azul vibrante */
+            color: #fff;
+            padding: 24px;
+            margin: 24px;
+            border-radius: 16px; /* Bordes redondeados */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra pronunciada */
+            text-align: center;
+        }
+        #api-info h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        #api-info p {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: rgba(255, 255, 255, 0.8); /* Texto semi-transparente */
+            line-height: 1.6;
+        }
+        #api-info a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5); /* Subrayado sutil */
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+        #api-info a:hover {
+            color: #ffeb3b; /* Amarillo brillante al pasar el mouse */
+            border-color: #ffeb3b;
         }
     </style>
     </head>
