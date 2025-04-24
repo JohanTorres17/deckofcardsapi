@@ -14,8 +14,8 @@
 
         /* Estilos generales del body */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Fondo degradado */
             color: #333;
             height: 100vh;
             display: flex;
@@ -25,35 +25,44 @@
         /* Header principal */
         header {
             background: #fff;
-            padding: 12px;
+            padding: 16px;
             text-align: center;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
         }
         header h2 {
-            font-size: 20px;
-            color: #444;
-            font-weight: 600; /* Añadido para dar más peso visual */
+            font-size: 22px;
+            color: #333;
+            font-weight: 700; /* Más peso visual */
+            letter-spacing: 1px; /* Espaciado entre letras */
         }
 
         /* Pestañas (Tabs) */
         #tabs {
             display: flex;
-            background: #eee;
+            background: #f9f9f9;
             margin-top: 12px;
+            border-radius: 8px; /* Bordes redondeados */
+            overflow: hidden; /* Evita bordes irregulares */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera */
         }
         .tab {
             flex: 1;
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             font-size: 14px;
             cursor: pointer;
-            transition: background 0.3s ease; /* Efecto suave al cambiar de pestaña */
+            transition: all 0.3s ease; /* Transición suave */
+            color: #555;
+            background: #f9f9f9;
         }
         .tab:hover {
-            background: #ddd; /* Cambio de color al pasar el mouse */
+            background: #eaeaea; /* Cambio de color al pasar el mouse */
+            color: #333;
         }
         .tab.active {
-            background: #ccc; /* Color más claro para el estado activo */
+            background: #6a9eff; /* Azul vibrante para el estado activo */
+            color: #fff;
             font-weight: bold;
         }
 
@@ -61,11 +70,11 @@
         #content {
             flex: 1;
             margin-top: 12px;
-            padding: 12px;
+            padding: 16px;
             background: #fff;
             overflow-y: auto;
-            border-radius: 8px; /* Bordes redondeados para un diseño más moderno */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            border-radius: 12px; /* Bordes más redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
         }
         .tab-content {
             display: none;
@@ -78,64 +87,73 @@
         .challenge-item {
             display: flex;
             align-items: center;
-            padding: 12px;
-            border: 1px solid #ccc;
+            padding: 16px;
+            border: 1px solid #ddd;
             margin-bottom: 12px;
-            background: #f9f9f9;
-            border-radius: 8px; /* Bordes redondeados */
-            transition: transform 0.2s ease; /* Efecto de elevación al hacer clic */
+            background: #fff;
+            border-radius: 12px; /* Bordes más redondeados */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Efecto de elevación */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera */
         }
         .challenge-item:hover {
-            transform: translateY(-2px); /* Ligera elevación al pasar el mouse */
+            transform: translateY(-4px); /* Elevación más pronunciada al pasar el mouse */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
         }
         .challenge-item img {
-            width: 50px;
-            height: 70px;
-            margin-right: 12px;
-            object-fit: cover; /* Asegura que las imágenes se ajusten correctamente */
-            border-radius: 4px; /* Bordes redondeados para las imágenes */
+            width: 60px;
+            height: 80px;
+            margin-right: 16px;
+            object-fit: cover;
+            border-radius: 8px; /* Bordes redondeados */
+            border: 2px solid #ddd; /* Borde sutil */
         }
         .challenge-item span {
             flex: 1;
             font-size: 14px;
-            line-height: 1.4; /* Mejora la legibilidad del texto */
+            line-height: 1.5;
+            color: #444; /* Color más suave */
         }
         .challenge-item button {
-            padding: 8px 12px;
-            background: #555;
+            padding: 10px 16px;
+            background: #6a9eff; /* Azul vibrante */
             color: #fff;
             border: none;
-            border-radius: 4px; /* Bordes redondeados para los botones */
+            border-radius: 8px; /* Bordes redondeados */
             cursor: pointer;
-            transition: background 0.3s ease; /* Efecto suave al pasar el mouse */
+            transition: background 0.3s ease, transform 0.2s ease; /* Transición suave */
+            font-weight: 600;
         }
         .challenge-item button:hover {
-            background: #333; /* Cambio de color al pasar el mouse */
+            background: #4d8cff; /* Azul más oscuro al pasar el mouse */
+            transform: scale(1.05); /* Aumento de tamaño ligero */
         }
 
         /* Sección de Contactos */
         #contactos {
             text-align: center;
-            padding: 16px;
+            padding: 24px;
         }
         #contactos h1 {
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: #555; /* Color más suave para el título */
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #333;
+            letter-spacing: 1px;
         }
         #contactos p {
             font-size: 14px;
-            margin-bottom: 8px;
-            color: #666; /* Color más suave para el texto */
+            margin-bottom: 16px;
+            color: #555;
+            line-height: 1.6;
         }
         #logo-contacto {
-            width: 150px;
-            height: 150px;
-            margin: 16px auto;
+            width: 160px;
+            height: 160px;
+            margin: 20px auto;
             display: block;
-            border-radius: 50%; /* Forma circular para el logo */
-            object-fit: cover; /* Asegura que el logo se ajuste correctamente */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            border-radius: 50%; /* Forma circular */
+            object-fit: cover;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+            border: 4px solid #fff; /* Borde blanco para resaltar */
         }
     </style>
     </head>
