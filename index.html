@@ -3,13 +3,188 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="https://johantorres17.github.io/deckofcardsapi/">
     <title>Reto Diario</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        body {
+            font-family: sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            overflow: auto;
+        }
+
+        /* Estructura general */
+        #app {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 12px;
+            border-bottom: 1px solid #ccc;
+        }
+        header h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        header input, header select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+        }
+
+        /* Tabs */
+        #tabs {
+            display: flex;
+            background: #eee;
+        }
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .tab.active {
+            background: #ddd;
+            font-weight: bold;
+        }
+
+        /* Contenido */
+        #content {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Items */
+        .challenge-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 12px;
+            border: 1px solid #ccc;
+            margin-bottom: 12px;
+        }
+        .challenge-item img {
+            width: 50px;
+            height: 70px;
+        }
+        .challenge-item span {
+            flex: 1;
+            margin: 0 10px;
+        }
+        .challenge-item button {
+            padding: 8px;
+            background: #555;
+            color: #fff;
+            border: none;
+        }
+
+        /* Formulario */
+        #registerForm {
+            background: #fff;
+            padding: 16px;
+            max-width: 360px;
+            margin: auto;
+        }
+        #registerForm input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+        #registerForm button {
+            width: 100%;
+            padding: 10px;
+            background: #555;
+            color: white;
+            border: none;
+        }
+
+        /* Sección Acerca */
+        #about {
+            padding: 16px;
+            background: #fff;
+            max-width: 700px;
+            margin: auto;
+        }
+        #about h3 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        #about p, #about li {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        /* Contacto */
+        #contact-info {
+            text-align: center;
+            padding: 16px;
+        }
+        #contact-info h1 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        #contact-info p {
+            font-size: 14px;
+        }
+        #logo-contacto {
+            width: 150px;
+            height: 150px;
+            margin: 16px auto;
+        }
+        .info-box {
+            background: #444;
+            color: #fff;
+            padding: 10px;
+            margin: auto;
+            max-width: 300px;
+        }
+        /* Media Queries para pantallas pequeñas */
+        @media (max-width: 600px) {
+            header {
+                text-align: left;
+            }
+            #tabs {
+                flex-wrap: wrap;
+            }
+            .tab {
+                flex-basis: 50%;
+            }
+            .challenge-item {
+                flex-direction: column;
+            }
+            .challenge-item img {
+                margin-bottom: 12px;
+            }
+        }
+ 
+    </style>
     </head>
     <body>
-    
     <div id="app">
         <header>
         <h2>Reto Diario</h2>
