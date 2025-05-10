@@ -1,0 +1,21 @@
+{
+  "name": "Deck of Cards - Retos",
+  "short_name": "Retos",
+  "description": "App de retos aleatorios con cartas",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1a237e",
+  "theme_color": "#3949ab",
+  "icons": [
+    {
+      "src": "img/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+    {
+      "src": "img/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ]
+}
